@@ -1,0 +1,2140 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>담음 DAMUM | 나만의 특별한 키링</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Myeongjo:wght@400;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #7EB8DA;
+            --primary-light: #B8D8E8;
+            --primary-pale: #E8F4F8;
+            --accent: #5A9BC4;
+            --warm: #F5E6D3;
+            --warm-light: #FDF8F3;
+            --text: #3A3A3A;
+            --text-light: #6B6B6B;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Gowun Batang', serif;
+            background: var(--warm-light);
+            color: var(--text);
+            line-height: 1.8;
+            overflow-x: hidden;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        /* Decorative floating elements */
+        .floating-decoration {
+            position: fixed;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.15;
+        }
+
+        .float-1 {
+            top: 10%;
+            left: 5%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, var(--primary-light) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float1 8s ease-in-out infinite;
+        }
+
+        .float-2 {
+            top: 60%;
+            right: 10%;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, var(--warm) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float2 10s ease-in-out infinite;
+        }
+
+        .float-3 {
+            bottom: 20%;
+            left: 15%;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, var(--primary-pale) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float3 6s ease-in-out infinite;
+        }
+
+        @keyframes float1 {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(30px, -20px) scale(1.1);
+            }
+        }
+
+        @keyframes float2 {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(-20px, 30px) scale(0.9);
+            }
+        }
+
+        @keyframes float3 {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            50% {
+                transform: translate(15px, 15px);
+            }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(253, 248, 243, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 0.8rem 1rem;
+            border-bottom: 1px solid rgba(126, 184, 218, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            height: 35px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text);
+            padding: 0.5rem;
+            touch-action: manipulation;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            min-height: 100dvh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 1.5rem 3rem;
+            position: relative;
+            background: linear-gradient(180deg, var(--primary-pale) 0%, var(--warm-light) 100%);
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-logo {
+            width: 240px;
+            max-width: 70%;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero-tagline {
+            font-family: 'Nanum Myeongjo', serif;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 0.8rem;
+            letter-spacing: 0.2em;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .hero-title {
+            font-family: 'Nanum Myeongjo', serif;
+            font-size: clamp(1.6rem, 6vw, 3.5rem);
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 1.2rem;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .hero-title em {
+            font-style: normal;
+            color: var(--accent);
+            position: relative;
+        }
+
+        .hero-title em::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--primary-light);
+            z-index: -1;
+            opacity: 0.6;
+        }
+
+        .hero-description {
+            font-size: 1rem;
+            color: var(--text-light);
+            max-width: 500px;
+            margin: 0 auto 2rem;
+            animation: fadeInUp 1s ease-out 0.8s both;
+            line-height: 1.9;
+        }
+
+        .hero-cta {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            animation: fadeInUp 1s ease-out 1s both;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-block;
+            text-align: center;
+            min-width: 200px;
+            touch-action: manipulation;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-primary:hover,
+        .btn-primary:active {
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(126, 184, 218, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            border: 2px solid var(--primary-light);
+        }
+
+        .btn-secondary:hover,
+        .btn-secondary:active {
+            background: var(--primary-pale);
+            border-color: var(--primary);
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .scroll-indicator span {
+            display: block;
+            width: 2px;
+            height: 30px;
+            background: linear-gradient(to bottom, var(--primary), transparent);
+            margin: 0 auto;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            50% {
+                transform: translateX(-50%) translateY(10px);
+            }
+        }
+
+        /* Section common styles */
+        section {
+            padding: 4rem 1.2rem;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-label {
+            font-size: 0.8rem;
+            letter-spacing: 0.25em;
+            color: var(--primary);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title {
+            font-family: 'Nanum Myeongjo', serif;
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            font-weight: 400;
+            color: var(--text);
+        }
+
+        /* About Section */
+        .about {
+            background: var(--white);
+            position: relative;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary-light), transparent);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-family: 'Nanum Myeongjo', serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 1.2rem;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .about-text p {
+            color: var(--text-light);
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+        }
+
+        .brand-values {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            justify-content: center;
+        }
+
+        .value-item {
+            text-align: center;
+        }
+
+        .value-icon {
+            width: 55px;
+            height: 55px;
+            background: var(--primary-pale);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.6rem;
+            font-size: 1.3rem;
+        }
+
+        .value-item span {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .about-visual {
+            position: relative;
+            order: -1;
+        }
+
+        .about-image-main {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-decoration {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: var(--primary-light);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0.5;
+        }
+
+        .about-decoration.top {
+            top: -20px;
+            right: -20px;
+        }
+
+        .about-decoration.bottom {
+            bottom: -20px;
+            left: -20px;
+            background: var(--warm);
+        }
+
+        /* Products Section */
+        .products {
+            background: linear-gradient(180deg, var(--warm-light) 0%, var(--primary-pale) 100%);
+        }
+
+        .product-categories {
+            display: flex;
+            justify-content: center;
+            gap: 0.6rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            padding: 0.7rem 1.2rem;
+            border: 1px solid var(--primary-light);
+            background: var(--white);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Gowun Batang', serif;
+            font-size: 0.9rem;
+            touch-action: manipulation;
+        }
+
+        .category-btn.active,
+        .category-btn:hover {
+            background: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(126, 184, 218, 0.2);
+        }
+
+        .product-image {
+            position: relative;
+            padding-top: 80%;
+            background: var(--primary-pale);
+            overflow: hidden;
+        }
+
+        .product-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: var(--accent);
+            color: var(--white);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            z-index: 1;
+        }
+
+        .product-info {
+            padding: 1.2rem;
+        }
+
+        .product-name {
+            font-family: 'Nanum Myeongjo', serif;
+            font-size: 1.1rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .product-description {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+        }
+
+        .product-price {
+            font-size: 1.05rem;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .product-placeholder {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: var(--text-light);
+        }
+
+        .product-placeholder .icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            opacity: 0.5;
+        }
+
+        /* Custom Process Section */
+        .process {
+            background: var(--white);
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            position: relative;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            background: var(--warm-light);
+            padding: 1.5rem;
+            border-radius: 20px;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-family: 'Nanum Myeongjo', serif;
+            font-size: 1.2rem;
+            color: var(--white);
+            box-shadow: 0 10px 30px rgba(126, 184, 218, 0.3);
+        }
+
+        .step-title {
+            font-family: 'Nanum Myeongjo', serif;
+            font-size: 1.05rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .step-description {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Team Section - Updated with background images */
+        .team {
+            background: var(--primary-pale);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.2rem;
+        }
+
+        .team-card {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            transition: all 0.3s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(126, 184, 218, 0.25);
+        }
+
+        .team-card-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            background-color: var(--primary-light);
+            transition: transform 0.4s ease;
+        }
+
+        .team-card:hover .team-card-bg {
+            transform: scale(1.05);
+        }
+
+        /* Default gradient backgrounds for team cards */
+        .team-card:nth-child(1) .team-card-bg {
+            background: linear-gradient(135deg, #B8D8E8 0%, #7EB8DA 50%, #5A9BC4 100%);
+        }
+
+        .team-card:nth-child(2) .team-card-bg {
+            background: linear-gradient(135deg, #F5E6D3 0%, #E8D4C0 50%, #D4C0A8 100%);
+        }
+
+        .team-card:nth-child(3) .team-card-bg {
+            background: linear-gradient(135deg, #E8F4F8 0%, #B8D8E8 50%, #9CC8DC 100%);
+        }
+
+        .team-card:nth-child(4) .team-card-bg {
+            background: linear-gradient(135deg, #FDF8F3 0%, #F5E6D3 50%, #E8D4C0 100%);
+        }
+
+        .team-card:nth-child(5) .team-card-bg {
+            background: linear-gradient(135deg, #D4E8F0 0%, #A8D0E4 50%, #7EB8DA 100%);
+        }
+
+        .team-card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(58, 58, 58, 0.9) 0%, rgba(58, 58, 58, 0.3) 50%, transparent 100%);
+        }
+
+        .team-card-content {
+            position: relative;
+            z-index: 1;
+            padding: 1.5rem;
+            color: var(--white);
+        }
+
+        .team-name {
+            font-family: 'Nanum Myeongjo', serif;
+            font-size: 1.2rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .team-role {
+            font-size: 0.85rem;
+            color: var(--primary-light);
+            margin-bottom: 0.6rem;
+        }
+
+        .team-bio {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.6;
+        }
+
+        /* Gallery Section - Slider */
+        .gallery {
+            background: var(--warm-light);
+            overflow: hidden;
+        }
+
+        .gallery-slider-container {
+            position: relative;
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+        .gallery-slider {
+            display: flex;
+            transition: transform 0.5s ease;
+            gap: 1rem;
+        }
+
+        .gallery-slide {
+            flex: 0 0 85%;
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+        }
+
+        .gallery-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-slide-placeholder {
+            width: 100%;
+            height: 100%;
+            background: var(--primary-pale);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        .gallery-slide-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+            color: var(--white);
+        }
+
+        .gallery-slide-caption h4 {
+            font-family: 'Nanum Myeongjo', serif;
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .gallery-slide-caption p {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .gallery-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .gallery-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            color: var(--text);
+            touch-action: manipulation;
+        }
+
+        .gallery-btn:hover,
+        .gallery-btn:active {
+            background: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+        }
+
+        .gallery-dots {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .gallery-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--primary-light);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            touch-action: manipulation;
+        }
+
+        .gallery-dot.active {
+            background: var(--primary);
+            width: 25px;
+            border-radius: 5px;
+        }
+
+        /* Popup Event Section */
+        .popup-event {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .popup-event::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .popup-content {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .popup-info .section-label {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .popup-info .section-title {
+            color: var(--white);
+            font-size: clamp(1.8rem, 6vw, 2.5rem);
+            margin-bottom: 1rem;
+        }
+
+        .popup-info>p {
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .popup-details {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .popup-detail-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .popup-detail-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .popup-detail-item .icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .popup-detail-item .text strong {
+            display: block;
+            font-size: 0.8rem;
+            opacity: 0.8;
+            font-weight: 400;
+        }
+
+        .popup-visual {
+            text-align: center;
+            order: -1;
+        }
+
+        .popup-card {
+            background: var(--white);
+            color: var(--text);
+            border-radius: 25px;
+            padding: 2rem 1.5rem;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .popup-card-title {
+            font-family: 'Nanum Myeongjo', serif;
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .popup-card-subtitle {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .popup-features {
+            text-align: left;
+        }
+
+        .popup-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .popup-feature .check {
+            width: 22px;
+            height: 22px;
+            background: var(--primary-pale);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            flex-shrink: 0;
+            font-size: 0.8rem;
+        }
+
+        /* Reviews Section */
+        .reviews {
+            background: var(--white);
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.2rem;
+        }
+
+        .review-card {
+            background: var(--warm-light);
+            border-radius: 20px;
+            padding: 1.5rem;
+            position: relative;
+        }
+
+        .review-card::before {
+            content: '"';
+            position: absolute;
+            top: 0.8rem;
+            left: 1.2rem;
+            font-family: 'Nanum Myeongjo', serif;
+            font-size: 3rem;
+            color: var(--primary-light);
+            line-height: 1;
+        }
+
+        .review-content {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 1.2rem;
+            padding-top: 1rem;
+            font-size: 0.95rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .review-author {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .review-avatar {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .review-author-info .name {
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .review-author-info .product {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        .review-stars {
+            color: #FFB800;
+            margin-bottom: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        /* Order Guide Section */
+        .order-guide {
+            background: var(--primary-pale);
+        }
+
+        .order-info {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.2rem;
+        }
+
+        .order-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .order-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(126, 184, 218, 0.15);
+        }
+
+        .order-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-pale);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.2rem;
+            font-size: 1.8rem;
+        }
+
+        .order-card h4 {
+            font-family: 'Nanum Myeongjo', serif;
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .order-card p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: var(--warm);
+            text-align: center;
+            padding: 4rem 1.5rem;
+        }
+
+        .cta-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta h2 {
+            font-family: 'Nanum Myeongjo', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+            line-height: 1.5;
+        }
+
+        .cta p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text);
+            color: var(--white);
+            padding: 3rem 1.5rem 1.5rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer-brand h3 {
+            font-family: 'Nanum Myeongjo', serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-brand p {
+            opacity: 0.7;
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        .footer-links h4 {
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.2rem;
+            justify-content: center;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--white);
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1.5rem;
+            text-align: center;
+            opacity: 0.6;
+            font-size: 0.85rem;
+        }
+
+        /* Desktop Responsive */
+        @media (min-width: 768px) {
+            nav {
+                padding: 1rem 2rem;
+            }
+
+            .nav-logo {
+                height: 40px;
+            }
+
+            section {
+                padding: 6rem 2rem;
+            }
+
+            .hero {
+                padding: 120px 2rem 4rem;
+            }
+
+            .hero-logo {
+                width: 280px;
+                max-width: 100%;
+            }
+
+            .hero-cta {
+                flex-direction: row;
+                justify-content: center;
+            }
+
+            .section-header {
+                margin-bottom: 4rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 4rem;
+            }
+
+            .about-visual {
+                order: 0;
+            }
+
+            .about-decoration {
+                width: 150px;
+                height: 150px;
+            }
+
+            .about-decoration.top {
+                top: -30px;
+                right: -30px;
+            }
+
+            .about-decoration.bottom {
+                bottom: -30px;
+                left: -30px;
+            }
+
+            .brand-values {
+                justify-content: flex-start;
+                gap: 2rem;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+            }
+
+            .product-image {
+                padding-top: 100%;
+            }
+
+            .process-steps {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 2rem;
+            }
+
+            .process-steps::before {
+                content: '';
+                position: absolute;
+                top: 30px;
+                left: 10%;
+                right: 10%;
+                height: 2px;
+                background: linear-gradient(90deg, var(--primary-light), var(--primary), var(--primary-light));
+                z-index: 0;
+            }
+
+            .process-step {
+                background: transparent;
+                padding: 0;
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(5, 1fr);
+                gap: 1.5rem;
+            }
+
+            .team-card {
+                min-height: 320px;
+            }
+
+            .gallery-slide {
+                flex: 0 0 45%;
+            }
+
+            .popup-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 4rem;
+            }
+
+            .popup-visual {
+                order: 0;
+            }
+
+            .popup-card {
+                padding: 3rem;
+                transform: rotate(3deg);
+            }
+
+            .popup-card:hover {
+                transform: rotate(0deg);
+            }
+
+            .reviews-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .order-info {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 2fr 1fr 1fr;
+                gap: 4rem;
+                text-align: left;
+            }
+
+            .social-links {
+                justify-content: flex-start;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .nav-links {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: none;
+            }
+
+            .gallery-slide {
+                flex: 0 0 35%;
+            }
+
+            .reviews-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Mobile Navigation */
+        @media (max-width: 1023px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 0;
+                gap: 0;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                padding: 1rem 1.5rem;
+                border-bottom: 1px solid var(--primary-pale);
+            }
+
+            .nav-links a {
+                display: block;
+                font-size: 1rem;
+            }
+
+            .nav-links a::after {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+
+        /* Animation on scroll */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Touch improvements */
+        @media (hover: none) {
+            .product-card:hover {
+                transform: none;
+            }
+
+            .team-card:hover {
+                transform: none;
+            }
+
+            .team-card:hover .team-card-bg {
+                transform: none;
+            }
+
+            .order-card:hover {
+                transform: none;
+            }
+
+            .btn-primary:hover,
+            .btn-secondary:hover {
+                transform: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Floating decorations -->
+    <div class="floating-decoration float-1"></div>
+    <div class="floating-decoration float-2"></div>
+    <div class="floating-decoration float-3"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <img src="damum_logo.png" alt="담음 로고" class="nav-logo">
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">브랜드 소개</a></li>
+                <li><a href="#products">상품</a></li>
+                <li><a href="#team">팀 소개</a></li>
+                <li><a href="#popup">팝업 행사</a></li>
+                <li><a href="#reviews">후기</a></li>
+                <li><a href="#order">주문 안내</a></li>
+            </ul>
+            <button class="mobile-menu-btn" onclick="toggleMenu()" aria-label="메뉴 열기">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <img src="damum_logo.png" alt="tone of DAMUM" class="hero-logo">
+            <p class="hero-tagline">CUSTOM KEYRING SHOP</p>
+            <h1 class="hero-title">당신의 이야기를<br><em>소중히 담습니다</em></h1>
+            <p class="hero-description">
+                세상에 단 하나뿐인 나만의 키링,<br>
+                담음이 당신의 특별한 순간을 작은 소품에 담아드립니다.
+            </p>
+            <div class="hero-cta">
+                <a href="https://www.instagram.com/tone_of_damum" target="_blank" class="btn btn-primary">인스타그램 DM
+                    주문</a>
+                <a href="#products" class="btn btn-secondary">상품 둘러보기</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span></span>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="section-container">
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <p class="section-label">ABOUT US</p>
+                    <h3>담음, 당신의 이야기를<br>담는 공간</h3>
+                    <p>
+                        '담음'은 '담다'에서 영감을 받은 이름입니다.
+                        우리는 단순한 소품이 아닌, 당신만의 이야기와 추억,
+                        소중한 순간들을 작은 키링 하나에 담아드립니다.
+                    </p>
+                    <p>
+                        반려동물, 좋아하는 캐릭터, 특별한 날의 기억까지—
+                        당신이 간직하고 싶은 모든 것을 세상에 하나뿐인
+                        소품으로 만들어 드릴게요.
+                    </p>
+                    <div class="brand-values">
+                        <div class="value-item">
+                            <div class="value-icon">✨</div>
+                            <span>유일함</span>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-icon">💝</div>
+                            <span>정성</span>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-icon">🎨</div>
+                            <span>창의성</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual fade-in">
+                    <div class="about-decoration top"></div>
+                    <div class="about-decoration bottom"></div>
+                    <img src="damum_2.jpg" alt="담음 모루인형 키링" class="about-image-main">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <p class="section-label">PRODUCTS</p>
+                <h2 class="section-title">나만의 특별한 키링</h2>
+            </div>
+            <div class="product-categories fade-in">
+                <button class="category-btn active">전체</button>
+                <button class="category-btn">모루인형</button>
+                <button class="category-btn">아크릴 키링</button>
+            </div>
+            <div class="products-grid">
+                <div class="product-card fade-in">
+                    <div class="product-image">
+                        <img src="damum_product_1.png" alt="모루인형 키링">
+                        <span class="product-badge">BEST</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">맞춤 모루인형 키링</h3>
+                        <p class="product-description">당신의 반려동물이나 좋아하는 캐릭터를 귀여운 모루인형으로</p>
+                        <p class="product-price">₩6,000~</p>
+                    </div>
+                </div>
+                <div class="product-card fade-in">
+                    <div class="product-image">
+                        <img src="damum_product_2.png" alt="아크릴 키링">
+                        <span>아크릴 키링</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">커스텀 아크릴 키링</h3>
+                        <p class="product-description">선명한 프린팅으로 완성되는 나만의 아크릴 키링</p>
+                        <p class="product-price">₩6,000~</p>
+                    </div>
+                </div>
+                <div class="product-card fade-in">
+                    <div class="product-image">
+                        <img src="damum_product_3.png" alt="스페셜 에디션">
+                        <span>스페셜 에디션</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">스페셜 에디션</h3>
+                        <p class="product-description">시즌 한정 특별 디자인 키링</p>
+                        <p class="product-price">Coming Soon</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <p class="section-label">HOW TO ORDER</p>
+                <h2 class="section-title">주문 제작 과정</h2>
+            </div>
+            <div class="process-steps">
+                <div class="process-step fade-in">
+                    <div class="step-number">01</div>
+                    <h4 class="step-title">상담 & 문의</h4>
+                    <p class="step-description">인스타그램 DM으로 원하시는 디자인을 말씀해주세요</p>
+                </div>
+                <div class="process-step fade-in">
+                    <div class="step-number">02</div>
+                    <h4 class="step-title">디자인 확정</h4>
+                    <p class="step-description">참고 이미지와 함께 세부 사항을 조율합니다</p>
+                </div>
+                <div class="process-step fade-in">
+                    <div class="step-number">03</div>
+                    <h4 class="step-title">정성스런 제작</h4>
+                    <p class="step-description">약 1주일간 정성껏 제작해 드려요</p>
+                </div>
+                <div class="process-step fade-in">
+                    <div class="step-number">04</div>
+                    <h4 class="step-title">배송 완료</h4>
+                    <p class="step-description">안전하게 포장하여 소중히 보내드립니다</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section - Updated -->
+    <section class="team" id="team">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <p class="section-label">OUR TEAM</p>
+                <h2 class="section-title">담음을 만들어가는 사람들</h2>
+            </div>
+            <div class="team-grid">
+                <div class="team-card fade-in">
+                    <div class="team-card-bg" style="background-image: url('member_1.jpg');"></div>
+                    <div class="team-card-overlay"></div>
+                    <div class="team-card-content">
+                        <h4 class="team-name">다미</h4>
+                        <p class="team-role">대표 / 기획</p>
+                        <p class="team-bio">담음의 방향을 이끌고, 모든 프로젝트의 시작점을 만들어갑니다.</p>
+                    </div>
+                </div>
+                <div class="team-card fade-in">
+                    <div class="team-card-bg" style="background-image: url('member_2.jpg');"></div>
+                    <div class="team-card-overlay"></div>
+                    <div class="team-card-content">
+                        <h4 class="team-name">소율</h4>
+                        <p class="team-role">디자인</p>
+                        <p class="team-bio">고객님의 이야기를 귀여운 디자인으로 풀어내는 일을 담당해요.</p>
+                    </div>
+                </div>
+                <div class="team-card fade-in">
+                    <div class="team-card-bg" style="background-image: url('member_3.jpg');"></div>
+                    <div class="team-card-overlay"></div>
+                    <div class="team-card-content">
+                        <h4 class="team-name">하음</h4>
+                        <p class="team-role">제작</p>
+                        <p class="team-bio">손끝에서 탄생하는 모루인형, 정성을 다해 만들어드려요.</p>
+                    </div>
+                </div>
+                <div class="team-card fade-in">
+                    <div class="team-card-bg" style="background-image: url('member_4.jpg');"></div>
+                    <div class="team-card-overlay"></div>
+                    <div class="team-card-content">
+                        <h4 class="team-name">채원</h4>
+                        <p class="team-role">고객 소통</p>
+                        <p class="team-bio">고객님과의 대화를 통해 원하시는 것을 정확히 파악합니다.</p>
+                    </div>
+                </div>
+                <div class="team-card fade-in">
+                    <div class="team-card-bg" style="background-image: url('member_5.jpg');"></div>
+                    <div class="team-card-overlay"></div>
+                    <div class="team-card-content">
+                        <h4 class="team-name">지우</h4>
+                        <p class="team-role">운영 / 배송</p>
+                        <p class="team-bio">완성된 작품을 안전하게 포장하고 배송을 책임집니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section - Slider -->
+    <section class="gallery" id="gallery">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <p class="section-label">GALLERY</p>
+                <h2 class="section-title">담음의 순간들</h2>
+            </div>
+            <div class="gallery-slider-container fade-in">
+                <div class="gallery-slider" id="gallerySlider">
+                    <div class="gallery-slide">
+                        <img src="dmaum_pic_1.jpg" alt="회의 사진">
+                        <div class="gallery-slide-caption">
+                            <h4>담음 멤버 회의</h4>
+                            <p>열정적인 회의로 가치를 만들다</p>
+                        </div>
+                    </div>
+                    <div class="gallery-slide">
+                        <div class="gallery-slide-placeholder">
+                            <img src="dmaum_pic_3.jpg" alt="회의 사진">
+                        </div>
+                        <div class="gallery-slide-caption">
+                            <h4>담음 멤버 전체 회의</h4>
+                            <p>작은 부분까지 꼼꼼하게</p>
+                        </div>
+                    </div>
+                    <div class="gallery-slide">
+                        <div class="gallery-slide-placeholder">
+                            <img src="dmaum_pic_5.jpg" alt="회의 사진">
+                        </div>
+                        <div class="gallery-slide-caption">
+                            <h4>담음 멤버 회의</h4>
+                            <p>다양한 아이디어들을 만나요</p>
+                        </div>
+                    </div>
+                    <div class="gallery-slide">
+                        <div class="gallery-slide-placeholder">
+                            <img src="dmaum_pic_2.jpg" alt="부스 사진">
+                        </div>
+                        <div class="gallery-slide-caption">
+                            <h4>이벤트 부스</h4>
+                            <p>동성로에서 열었던 이벤트 부스</p>
+                        </div>
+                    </div>
+                    <div class="gallery-slide">
+                        <div class="gallery-slide-placeholder">
+                            <img src="dmaum_pic_4.jpg" alt="부스 사진">
+                        </div>
+                        <div class="gallery-slide-caption">
+                            <h4>이벤트 부스2</h4>
+                            <p>더욱 특별한 장소에서의 이벤트</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-controls">
+                    <button class="gallery-btn" onclick="moveSlide(-1)" aria-label="이전">←</button>
+                    <div class="gallery-dots" id="galleryDots">
+                        <span class="gallery-dot active" onclick="goToSlide(0)"></span>
+                        <span class="gallery-dot" onclick="goToSlide(1)"></span>
+                        <span class="gallery-dot" onclick="goToSlide(2)"></span>
+                        <span class="gallery-dot" onclick="goToSlide(3)"></span>
+                        <span class="gallery-dot" onclick="goToSlide(4)"></span>
+                    </div>
+                    <button class="gallery-btn" onclick="moveSlide(1)" aria-label="다음">→</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popup Event Section -->
+    <section class="popup-event" id="popup">
+        <div class="section-container">
+            <div class="popup-content">
+                <div class="popup-info fade-in">
+                    <p class="section-label">UPCOMING EVENT</p>
+                    <h2 class="section-title">tone of DAMUM</h2>
+                    <p>
+                        너만의 이야기를 담은 키링 ✨<br>
+                        청년들의 미완성된 이야기가 잘 완성될 수 있도록,<br>
+                        인생 로드맵 코칭과 함께하는 특별한 팝업!
+                    </p>
+                    <div class="popup-details">
+                        <div class="popup-detail-item">
+                            <div class="icon">📅</div>
+                            <div class="text">
+                                <strong>일정</strong>
+                                2025년 6월 중순
+                            </div>
+                        </div>
+                        <div class="popup-detail-item">
+                            <div class="icon">📍</div>
+                            <div class="text">
+                                <strong>장소</strong>
+                                대구 동성로
+                            </div>
+                        </div>
+                        <div class="popup-detail-item">
+                            <div class="icon">📝</div>
+                            <div class="text">
+                                <strong>참여 방법</strong>
+                                사전 예약 (인스타그램)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="popup-visual fade-in">
+                    <div class="popup-card">
+                        <h3 class="popup-card-title">이런 분들께 추천해요</h3>
+                        <p class="popup-card-subtitle">당신의 이야기, 담음이 들을게요</p>
+                        <div class="popup-features">
+                            <div class="popup-feature">
+                                <span class="check">✓</span>
+                                <span>나만의 특별한 키링을 갖고 싶은 분</span>
+                            </div>
+                            <div class="popup-feature">
+                                <span class="check">✓</span>
+                                <span>인생의 방향에 대해 고민 중인 청년</span>
+                            </div>
+                            <div class="popup-feature">
+                                <span class="check">✓</span>
+                                <span>1:1 코칭을 통해 로드맵을 그려보고 싶은 분</span>
+                            </div>
+                            <div class="popup-feature">
+                                <span class="check">✓</span>
+                                <span>소중한 추억을 소품으로 간직하고 싶은 분</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews" id="reviews">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <p class="section-label">REVIEWS</p>
+                <h2 class="section-title">고객 후기</h2>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card fade-in">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-content">
+                        제 강아지 말티즈를 모루인형으로 만들어주셨는데, 정말 똑같아서 깜짝 놀랐어요! 친구들한테 자랑하느라 바빴습니다 ㅎㅎ
+                    </p>
+                    <div class="review-author">
+                        <div class="review-avatar">🐶</div>
+                        <div class="review-author-info">
+                            <span class="name">김지은 님</span>
+                            <span class="product">모루인형 키링 구매</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card fade-in">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-content">
+                        여자친구 생일 선물로 우리 커플 캐릭터 키링 주문했는데, 완전 감동받았어요. 세상에 하나뿐인 선물이라 더 특별했습니다!
+                    </p>
+                    <div class="review-author">
+                        <div class="review-avatar">💑</div>
+                        <div class="review-author-info">
+                            <span class="name">이준혁 님</span>
+                            <span class="product">커스텀 아크릴 키링 구매</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card fade-in">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-content">
+                        무지개다리를 건넌 우리 고양이를 키링으로 만들어주셨어요. 덕분에 항상 함께하는 기분이에요. 정말 감사합니다 🥹
+                    </p>
+                    <div class="review-author">
+                        <div class="review-avatar">🐱</div>
+                        <div class="review-author-info">
+                            <span class="name">박서연 님</span>
+                            <span class="product">모루인형 키링 구매</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card fade-in">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-content">
+                        DM으로 소통하면서 원하는 디자인을 세심하게 맞춰주셨어요. 제작 과정 사진도 보내주시고, 정성이 느껴졌습니다!
+                    </p>
+                    <div class="review-author">
+                        <div class="review-avatar">✨</div>
+                        <div class="review-author-info">
+                            <span class="name">최민아 님</span>
+                            <span class="product">아크릴 키링 구매</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card fade-in">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-content">
+                        친구들이랑 우정 키링 맞췄는데 퀄리티가 장난 아니에요! 가격도 착하고, 배송도 빨라서 대만족입니다 👍
+                    </p>
+                    <div class="review-author">
+                        <div class="review-avatar">👭</div>
+                        <div class="review-author-info">
+                            <span class="name">정하늘 님</span>
+                            <span class="product">모루인형 키링 3개 구매</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Guide Section -->
+    <section class="order-guide" id="order">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <p class="section-label">ORDER INFO</p>
+                <h2 class="section-title">주문 안내</h2>
+            </div>
+            <div class="order-info">
+                <div class="order-card fade-in">
+                    <div class="order-icon">💰</div>
+                    <h4>가격 안내</h4>
+                    <p>
+                        기본 키링 ₩6,000~<br>
+                        디자인 복잡도에 따라<br>
+                        가격이 달라질 수 있어요
+                    </p>
+                </div>
+                <div class="order-card fade-in">
+                    <div class="order-icon">⏰</div>
+                    <h4>제작 기간</h4>
+                    <p>
+                        주문 확정 후 약 1주일<br>
+                        (주문량에 따라<br>
+                        변동될 수 있습니다)
+                    </p>
+                </div>
+                <div class="order-card fade-in">
+                    <div class="order-icon">📱</div>
+                    <h4>주문 방법</h4>
+                    <p>
+                        인스타그램 DM으로<br>
+                        편하게 문의해주세요!<br>
+                        @tone_of_damum
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-content fade-in">
+            <h2>당신만의 이야기를<br>담아볼까요?</h2>
+            <p>지금 바로 인스타그램 DM으로 문의해주세요.<br>담음이 정성껏 만들어드릴게요.</p>
+            <a href="https://www.instagram.com/tone_of_damum" target="_blank" class="btn btn-primary">인스타그램으로 문의하기</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>담음 DAMUM</h3>
+                <p>
+                    당신의 이야기를 소중히 담는 커스텀 소품샵.<br>
+                    세상에 단 하나뿐인 특별한 키링을 만들어 드립니다.
+                </p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/tone_of_damum" target="_blank" class="social-link"
+                        aria-label="Instagram">📷</a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>바로가기</h4>
+                <ul>
+                    <li><a href="#about">브랜드 소개</a></li>
+                    <li><a href="#products">상품</a></li>
+                    <li><a href="#team">팀 소개</a></li>
+                    <li><a href="#popup">팝업 행사</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>고객 지원</h4>
+                <ul>
+                    <li><a href="#order">주문 안내</a></li>
+                    <li><a href="#reviews">고객 후기</a></li>
+                    <li><a href="https://www.instagram.com/tone_of_damum" target="_blank">문의하기</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 담음 DAMUM. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+
+        // Gallery Slider
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.gallery-slide');
+        const dots = document.querySelectorAll('.gallery-dot');
+        const slider = document.getElementById('gallerySlider');
+        let slideWidth;
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        function updateSlideWidth() {
+            const containerWidth = slider.parentElement.offsetWidth;
+            if (window.innerWidth >= 1024) {
+                slideWidth = containerWidth * 0.35 + 16; // 35% + gap
+            } else if (window.innerWidth >= 768) {
+                slideWidth = containerWidth * 0.45 + 16; // 45% + gap
+            } else {
+                slideWidth = containerWidth * 0.85 + 16; // 85% + gap
+            }
+        }
+
+        function goToSlide(index) {
+            updateSlideWidth();
+            currentSlide = index;
+            if (currentSlide < 0) currentSlide = slides.length - 1;
+            if (currentSlide >= slides.length) currentSlide = 0;
+
+            slider.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentSlide);
+            });
+        }
+
+        function moveSlide(direction) {
+            goToSlide(currentSlide + direction);
+        }
+
+        // Touch events for gallery
+        slider.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        slider.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            if (touchStartX - touchEndX > swipeThreshold) {
+                moveSlide(1); // Swipe left
+            } else if (touchEndX - touchStartX > swipeThreshold) {
+                moveSlide(-1); // Swipe right
+            }
+        }
+
+        // Auto slide
+        let autoSlideInterval = setInterval(() => moveSlide(1), 5000);
+
+        // Pause on interaction
+        slider.addEventListener('touchstart', () => {
+            clearInterval(autoSlideInterval);
+        });
+
+        slider.addEventListener('touchend', () => {
+            autoSlideInterval = setInterval(() => moveSlide(1), 5000);
+        });
+
+        // Update on resize
+        window.addEventListener('resize', () => {
+            updateSlideWidth();
+            goToSlide(currentSlide);
+        });
+
+        // Initialize
+        updateSlideWidth();
+
+        // Scroll animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = 70;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Category filter (visual only)
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.background = 'rgba(253, 248, 243, 0.98)';
+                nav.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.05)';
+            } else {
+                nav.style.background = 'rgba(253, 248, 243, 0.95)';
+                nav.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+
+</html>
